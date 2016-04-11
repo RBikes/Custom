@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="web_widget_text_markdown assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet"
+                      href="/roetz_custom/static/src/css/roetz_custom.css"/>
+            </xpath>
+        </template>
+    </data>
+</openerp>
