@@ -26,6 +26,7 @@
     "depends": [
         'web',
         'account',
+        'mrp',
     ],
     'data': [
         'views/templates.xml',
