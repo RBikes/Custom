@@ -32,6 +32,7 @@
         'stock',
         'website_sale',
         'website_google_maps',
+        'website_crm_partner_assign',
     ],
     'data': [
         'views/templates.xml',
