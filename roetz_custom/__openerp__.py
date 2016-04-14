@@ -30,6 +30,8 @@
         'payment_buckaroo',
         'payment_paypal',
         'stock',
+        'website_sale',
+        'website_google_maps',
     ],
     'data': [
         'views/templates.xml',
