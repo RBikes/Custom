@@ -6,6 +6,12 @@
             <link rel="stylesheet" href='/roetz_custom/static/src/css/website.css' t-ignore="true"/>
         </template>
 
+        <template id="google_map" inherit_id="website_google_map.google_map">
+            <xpath expr="/html/head" position="inside">
+                <link rel="stylesheet" href='/roetz_custom/static/src/css/google_map.css' t-ignore="true"/>
+            </xpath>
+        </template>
+
         <template id="assets_frontend" inherit_id="website.assets_frontend">
             <xpath expr="." position="inside">
             </xpath>
