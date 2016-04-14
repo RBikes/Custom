@@ -27,6 +27,8 @@
         'web',
         'account',
         'mrp',
+        'payment_buckaroo',
+        'payment_paypal',
     ],
     'data': [
         'views/templates.xml',

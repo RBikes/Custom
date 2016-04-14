@@ -20,8 +20,8 @@ class PatchBuckaroo(models.AbstractModel):
             'https://www.roetz-bikes.com/payment/buckaroo/cancel')
         BuckarooController._exception_url = (
             'https://www.roetz-bikes.com/payment/buckaroo/error')
-        BuckarooController._exception_url = (
-            'https://www.roetz-bikes.com/payment/buckaroo/error')
+        BuckarooController._reject_url = (
+            'https://www.roetz-bikes.com/payment/buckaroo/reject')
         return res
 
 
