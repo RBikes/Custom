@@ -29,6 +29,7 @@
         'mrp',
         'payment_buckaroo',
         'payment_paypal',
+        'stock',
     ],
     'data': [
         'views/templates.xml',
