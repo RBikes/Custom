@@ -1,0 +1,18 @@
+#oe_main_menu_navbar li a, #oe_main_menu_navbar li button {
+    margin-top: 0px;
+    margin-bottom: 7px;
+}
+
+/* ----- BOOTSTRAP HACK FOR HEADER NAV BAR ----- */
+.navbar.navbar-static-top {
+    margin-bottom: 0px;
+}
+
+div.hidehover {
+    opacity: 1.0;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+div.hidehover:hover {
+    opacity: 0.0;
+    filter: alpha(opacity=0); /* For IE8 and earlier */
+}

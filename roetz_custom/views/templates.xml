@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <template id="assets_backend" name="web_widget_text_markdown assets" inherit_id="web.assets_backend">
+
+        <template id="theme" inherit_id='website.theme'>
+            <link rel="stylesheet" href='/roetz_custom/static/src/css/website.css' t-ignore="true"/>
+        </template>
+
+        <template id="assets_frontend" inherit_id="website.assets_frontend">
             <xpath expr="." position="inside">
-                <link rel="stylesheet"
-                      href="/roetz_custom/static/src/css/roetz_custom.css"/>
             </xpath>
         </template>
 
