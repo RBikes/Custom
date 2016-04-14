@@ -7,5 +7,14 @@
                       href="/roetz_custom/static/src/css/roetz_custom.css"/>
             </xpath>
         </template>
+
+        <template id="buckaroo_acquirer_button" inherit_id='payment_buckaroo.buckaroo_acquirer_button'>
+            <input name='Brq_return' position='replace' />
+            <input name='Brq_returncancel' position='replace' />
+            <input name='Brq_returnerror' position='replace' />
+            <input name='Brq_returnreject' position='replace' />
+            <input name='add_returndata' position='replace' />
+        </template>
+
     </data>
 </openerp>
