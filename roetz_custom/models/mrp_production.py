@@ -6,4 +6,4 @@ class Production(models.Model):
     _inherit = 'mrp.production'
 
     # Overwrite readonly property
-    date_planned = fields.date(readonly=False)
+    date_planned = fields.Date(readonly=False)

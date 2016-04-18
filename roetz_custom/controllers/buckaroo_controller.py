@@ -3,7 +3,7 @@ import logging
 import pprint
 import werkzeug
 from openerp import http, SUPERUSER_ID
-from opener.addons.payment_buckaroo.controllers.main import BuckarooController
+from openerp.addons.payment_buckaroo.controllers.main import BuckarooController
 from openerp import models
 
 _logger = logging.getLogger(__name__)

@@ -1,5 +1,5 @@
 # coding: utf-8
-from opener.addons.payment_paypal.controllers.main import PaypalController
+from openerp.addons.payment_paypal.controllers.main import PaypalController
 from openerp import models
 
 
