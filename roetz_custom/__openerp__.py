@@ -29,12 +29,14 @@
         'mrp',
         'payment_buckaroo',
         'payment_paypal',
+        'sale_order_dates',
         'stock',
         'website_sale',
         'website_google_map',
         'website_crm_partner_assign',
     ],
     'data': [
+        'views/sale_order.xml',
         'views/templates.xml',
     ],
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- replace the contents of the original view inheritance. Original
+             view placed the same fields after group sale_pay. Replace effective
+             date by new commitment date-->
+        <record id="sale_order_dates.view_sale_orderfor" model="ir.ui.view">
+            <field name="arch" type="xml">
+                <field name="date_order" position="after">
+                    <field name="requested_date" on_change="onchange_requested_date(requested_date, commitment_date)"/>
+                    <field name="commitment_date"/>
+                    <field name="new_commitment_date"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_order_tree_date model="ir.ui.view">
+            <field name="inherit_id" ref="sale_order_dates.view_order_tree_date"/>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <field name="commitment_date" position="after">
+                    <field name="new_commitment_date"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_quotation_tree_date model="ir.ui.view">
+            <field name="inherit_id" ref="sale_order_dates.view_quotation_tree_date"/>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <field name="commitment_date" position="after">
+                    <field name="new_commitment_date"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

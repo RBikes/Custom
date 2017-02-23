@@ -8,3 +8,5 @@ picked from a manually altered source code tree of Odoo.
 * Tweak buckaroo return urls using hardcoded domain
 * Filter out certain fields from buckaroo response (e.g. Brq_amount, Brq_returncancel, Brq_returnerror)
 * Don't fetch return url from response but bsaed on response status code.
+* Add 'new commitment date' field on sale orders
+* Change the computation of the commitment date to reflect the biggest lead time of all sold products instead of the smallest lead time
