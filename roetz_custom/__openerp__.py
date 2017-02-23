@@ -25,12 +25,11 @@
     "website": 'https://opener.am',
     "depends": [
         'web',
-        'account',
+        'stock_account',
         'mrp',
         'payment_buckaroo',
         'payment_paypal',
         'sale_order_dates',
-        'stock',
         'website_sale',
         'website_google_map',
         'website_crm_partner_assign',
