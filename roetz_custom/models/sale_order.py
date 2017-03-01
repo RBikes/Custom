@@ -26,4 +26,4 @@ class SaleOrder(models.Model):
             delay = max(line.delay for line in order.order_line)
             order.commitment_date = fields.Datetime.to_string(
                 fields.Datetime.from_string(
-                    order.order_date) + timedelta(days=delay))
+                    order.date_order) + timedelta(days=delay))
