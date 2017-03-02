@@ -14,3 +14,4 @@ picked from a manually altered source code tree of Odoo.
 * Load Google maps javascript interface code from custom module
 ? Disable sending of order and adding customer as a follower on web orders
 * Fail gracefully when _account_entry_move is called on quants without a move
+? Customizations of website and webshop css
