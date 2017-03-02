@@ -12,3 +12,5 @@ picked from a manually altered source code tree of Odoo.
 * Change the computation of the commitment date to reflect the biggest lead time of all sold products instead of the smallest lead time
 * Show sale order dates in the top right corner of the sale order form grid
 * Load Google maps javascript interface code from custom module
+? Disable sending of order and adding customer as a follower on web orders
+* Fail gracefully when _account_entry_move is called on quants without a move
