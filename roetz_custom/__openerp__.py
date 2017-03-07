@@ -35,6 +35,7 @@
         'website_crm_partner_assign',
     ],
     'data': [
+        'views/product.xml',
         'views/sale_order.xml',
         'views/templates.xml',
     ],

@@ -38,7 +38,7 @@ class AcquirerBuckaroo(models.Model):
                 k, urllib.unquote_plus(v)) for k, v in items)
         else:
             sign = ''.join('%s=%s' % (k, get_value(k)) for k in keys)
-        #Add the pre-shared secret key at the end of the signature
+        # Add the pre-shared secret key at the end of the signature
         sign = sign + acquirer.brq_secretkey
         if isinstance(sign, str):
             # TODO: remove me? should not be used
