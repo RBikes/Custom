@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2016 Opener B.V. (<https://opener.am>).
+#    Copyright (C) 2016-2017 Opener B.V. (<https://opener.am>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -20,15 +20,17 @@
 {
     "name": "Various customizations",
     "category": "Custom",
-    "version": "8.0.1.1.0",
+    "version": "8.0.1.2.0",
     "author": "Opener B.V.",
     "website": 'https://opener.am',
+    "license": 'AGPL-3',
     "depends": [
         'web',
         'stock_account',
         'mrp',
         'payment_buckaroo',
         'payment_paypal',
+        'purchase',
         'sale_order_dates',
         'website_sale',
         'website_google_map',

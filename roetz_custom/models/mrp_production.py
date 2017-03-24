@@ -7,3 +7,4 @@ class Production(models.Model):
 
     # Overwrite readonly property
     date_planned = fields.Date(readonly=False)
+    product_id = fields.Many2one(index=True)

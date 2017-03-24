@@ -15,3 +15,5 @@ picked from a manually altered source code tree of Odoo.
 * Disable sending of order and adding customer as a follower on web orders
 * Fail gracefully when _account_entry_move is called on quants without a move
 * Customizations of website and webshop css.
+* Tweak Odoo's caching by allowing to set a custom prefetch record count, used when calculating a product template's variants' stock levels
+* Replace product template's button counter methods by fast SQL based versions
