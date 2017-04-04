@@ -23,7 +23,7 @@ class SaleOrder(models.Model):
     def _compute_commitment_date(self):
         """ Take max date instead of min. delivery date """
         for order in self:
-            delay = max(line.delay for line in order.order_line)
+            delay = max([line.delay for line in order.order_line] or [0])
             order.commitment_date = fields.Datetime.to_string(
                 fields.Datetime.from_string(
                     order.date_order) + timedelta(days=delay))
