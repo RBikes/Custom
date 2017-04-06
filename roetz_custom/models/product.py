@@ -1,11 +1,46 @@
 # coding: utf-8
 import logging
 from openerp import api, fields, models
+from openerp.tools import ormcache
 from openerp.addons.stock.product import product_product as StockProduct
 
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
+
+    @ormcache()
+    @api.multi
+    def get_attribute_value_ids(self, pricelist_id, currency_id):
+        self.ensure_one()
+        product = self.with_context(active_id=self.id)
+        attribute_value_ids = []
+        visible_attrs = set(
+            l.attribute_id.id
+            for l in product.attribute_line_ids
+            if len(l.value_ids) > 1)
+        if pricelist_id != self.env.context['pricelist']:
+            website_currency_id = currency_id
+            to_currency_id = self.env['product.pricelist'].browse(
+                self.env.context['pricelist']).currency_id.id
+            for p in product.product_variant_ids:
+                price = self.env['res.currency'].browse(
+                    website_currency_id).compute(
+                        p.lst_price, to_currency_id)
+                attribute_value_ids.append([
+                    p.id,
+                    [v.id for v in p.attribute_value_ids
+                     if v.attribute_id.id in visible_attrs],
+                    p.price, price])
+        else:
+            attribute_value_ids = [
+                [
+                    p.id, [
+                        v.id for v in p.attribute_value_ids
+                        if v.attribute_id.id in visible_attrs
+                    ],
+                    p.price, p.lst_price,
+                ] for p in product.product_variant_ids]
+        return attribute_value_ids
 
     @api.multi
     def _compute_product_variant_count(self):

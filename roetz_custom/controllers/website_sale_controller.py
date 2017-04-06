@@ -22,3 +22,13 @@ class SaleController(website_sale):
             transaction_id=transaction_id, sale_order_id=sale_order_id, **post)
         del http.request.context['mail_off']
         return res
+
+    def get_attribute_value_ids(self, product):
+        """ Delegate to a cached orm method """
+        print "Hello"
+        context = dict(product.env.context)
+        context.pop('lang', False)
+        context.pop('active_id', False)
+        return product.with_context(context).get_attribute_value_ids(
+            http.request.website.pricelist_id.id,
+            http.request.website.currency_id.id)
