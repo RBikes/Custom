@@ -17,3 +17,4 @@ picked from a manually altered source code tree of Odoo.
 * Customizations of website and webshop css.
 * Tweak Odoo's caching by allowing to set a custom prefetch record count, used when calculating a product template's variants' stock levels
 * Replace product template's button counter methods by fast SQL based versions
+* Cache the gathering of attribute values per product template used in the webshop
