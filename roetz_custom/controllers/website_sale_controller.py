@@ -25,7 +25,6 @@ class SaleController(website_sale):
 
     def get_attribute_value_ids(self, product):
         """ Delegate to a cached orm method """
-        print "Hello"
         context = dict(product.env.context)
         context.pop('lang', False)
         context.pop('active_id', False)
