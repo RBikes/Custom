@@ -8,7 +8,18 @@ from openerp.addons.stock.product import product_product as StockProduct
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    @ormcache()
+    @api.multi
+    def clear_attribute_value_cache(self):
+        """ Selectively clear the cache of the given templates """
+        keys = [(
+            self._name,
+            self.get_attribute_value_ids.__wrapped__,
+            tmpl) for tmpl in self]
+        for key in self.pool.cache.keys():
+            if key[:3] in keys:
+                del self.pool.cache[key]
+
+    @ormcache(skiparg=0)
     @api.multi
     def get_attribute_value_ids(self, pricelist_id, currency_id):
         self.ensure_one()
@@ -135,3 +146,30 @@ class Product(models.Model):
                 StockProduct._product_available
             StockProduct._product_available = _product_available
         return super(Product, self)._register_hook(cr)
+
+    @api.model
+    def create(self, vals):
+        res = super(Product, self).create(vals)
+        if not self.env.context.get('create_product_variant'):
+            res.product_tmpl_id.clear_attribute_value_cache()
+        return res
+
+    @api.multi
+    def write(self, vals):
+        res = super(Product, self).write(vals)
+        if not self.env.context.get('create_product_variant') and any(
+                field in vals for field in (
+                    'attribute_value_ids',
+                    'list_price',
+                    'lst_price')):
+            self.mapped('product_tmpl_id').clear_attribute_value_cache()
+        return res
+
+    @api.multi
+    def unlink(self):
+        if not self.env.context.get('create_product_variant'):
+            templates = self.mapped('product_tmpl_id')
+        res = super(Product, self).unlink()
+        if not self.env.context.get('create_product_variant'):
+            templates.clear_attribute_value_cache()
+        return res

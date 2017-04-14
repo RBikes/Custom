@@ -3,6 +3,8 @@ from . import acquirer_buckaroo
 from . import basemodel_monkeypatch
 from . import mrp_production
 from . import product
+from . import product_attribute_line
+from . import product_attribute_price
 from . import product_attribute_value
 from . import purchase_order_line
 from . import res_partner
