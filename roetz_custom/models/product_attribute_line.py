@@ -17,7 +17,7 @@ class AttributeLine(models.Model):
 
     @api.model
     def create(self, vals):
-        res = super(AttributeLine, self).write(vals)
+        res = super(AttributeLine, self).create(vals)
         if not self.env.context.get('create_product_variant'):
             res.product_tmpl_id.clear_attribute_value_cache()
         return res

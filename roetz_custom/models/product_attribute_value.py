@@ -19,7 +19,7 @@ class Value(models.Model):
 
     @api.model
     def create(self, vals):
-        res = super(Value, self).write(vals)
+        res = super(Value, self).create(vals)
         if not self.env.context.get('create_product_variant'):
             res.mapped(
                 'product_ids.product_tmpl_id').clear_attribute_value_cache()

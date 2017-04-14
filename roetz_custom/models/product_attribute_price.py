@@ -17,7 +17,7 @@ class Price(models.Model):
 
     @api.model
     def create(self, vals):
-        res = super(Price, self).write(vals)
+        res = super(Price, self).create(vals)
         if not self.env.context.get('create_product_variant'):
             res.product_tmpl_id.clear_attribute_value_cache()
         return res
