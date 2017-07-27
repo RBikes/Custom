@@ -7,5 +7,5 @@ class PaymentTransaction(models.Model):
 
     @api.model
     def form_feedback(self, data, acquirer_name):
-        return super(PaymentTransaction, self).with_context(
-            mail_off=True).form_feedback(data, aquirer_name)
+        return super(PaymentTransaction, self.with_context(
+            mail_off=True)).form_feedback(data, acquirer_name)
