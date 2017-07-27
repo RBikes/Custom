@@ -2,6 +2,7 @@ from . import account_move_reconcile
 from . import acquirer_buckaroo
 from . import basemodel_monkeypatch
 from . import mrp_production
+from . import payment_transaction
 from . import product
 from . import product_attribute_line
 from . import product_attribute_price
