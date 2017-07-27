@@ -7,7 +7,7 @@ class SaleController(website_sale):
     def checkout_form_save(self, checkout):
         """  Inject context key honoured in res.partner::write() """
         http.request.context['mail_off'] = True
-        res = super(SaleController, self).checkout_form_sale(checkout)
+        res = super(SaleController, self).checkout_form_save(checkout)
         del http.request.context['mail_off']
         return res
 
