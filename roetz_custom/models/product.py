@@ -5,8 +5,20 @@ from openerp.tools import ormcache
 from openerp.addons.stock.product import product_product as StockProduct
 
 
+_logger = logging.getLogger(__name__)
+
+
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
+
+    @api.multi
+    def write(self, vals):
+        res = super(ProductTemplate, self).write(vals)
+        if any(field in vals for field in (
+                'list_price',
+                'lst_price')):
+            self.clear_attribute_value_cache()
+        return res
 
     @api.multi
     def clear_attribute_value_cache(self):
@@ -17,12 +29,14 @@ class ProductTemplate(models.Model):
             tmpl) for tmpl in self]
         for key in self.pool.cache.keys():
             if key[:3] in keys:
+                _logger.info('removing cache entry for template#%s', key[2].id)
                 del self.pool.cache[key]
 
     @ormcache(skiparg=0)
     @api.multi
     def get_attribute_value_ids(self, pricelist_id, currency_id):
         self.ensure_one()
+        _logger.info('adding cache entry for template#%s', self.id)
         product = self.with_context(active_id=self.id)
         attribute_value_ids = []
         visible_attrs = set(
@@ -139,7 +153,7 @@ class Product(models.Model):
                 context=context)
 
         if not hasattr(StockProduct, '_roetz_custom_product_available'):
-            logging.getLogger(__name__).info(
+            _logger.info(
                 'Installing monkeypatch on product.product::_product_available'
             )
             StockProduct._roetz_product_available = \
